@@ -1,5 +1,5 @@
 /**
- * \file UserAnalysis.h
+ * \file OpDetInvestigator.h
  *
  * 
  * \brief Little sample program for establishing a user analysis space.
@@ -14,19 +14,19 @@
 
 #include "TTree.h"
 
-namespace test{
-  class UserAnalysis;
+namespace opana{
+  class OpDetInvestigator;
 }
 
-class test::UserAnalysis{
+class opana::OpDetInvestigator{
   
 public:
   
   /// Default constructor
-  UserAnalysis();
+  OpDetInvestigator();
 
   /// Default destructor
-  virtual ~UserAnalysis(){};
+  virtual ~OpDetInvestigator(){};
 
   void RunAnalysis();
   void SetupOutputTree(TTree*);
