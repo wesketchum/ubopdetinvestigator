@@ -9,7 +9,7 @@ art_make_library( LIBRARY_NAME  ub_OpDetInvestigator
 #	                uboone_Geometry
 #                      OpticalDetectorData
 #			OpticalDetector
- #                     RawData
+                     RawData
 #			RecoBase
 #			Simulation
 #			SimulationBase

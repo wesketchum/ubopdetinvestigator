@@ -64,7 +64,13 @@ opana::OpDetInvestigatorAna::OpDetInvestigatorAna(fhicl::ParameterSet const & p)
 
 void opana::OpDetInvestigatorAna::analyze(art::Event const & e)
 {
-  fMyAnalysisObj.RunAnalysis();
+
+  art::Handle<std::vector<raw::OpDetWaveform> > waveformHandle;
+  e.getByLabel("pmtreadout","OpdetBeamHighGain",waveformHandle);
+  if(!waveformHandle.isValid()) throw std::exception();
+  std::vector<raw::OpDetWaveform> const& waveformVector(*waveformHandle);
+  
+  fMyAnalysisObj.RunAnalysis(waveformVector);
 }
 
 void opana::OpDetInvestigatorAna::reconfigure(fhicl::ParameterSet const & p)

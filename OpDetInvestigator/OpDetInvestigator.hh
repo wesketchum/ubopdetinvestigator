@@ -14,6 +14,8 @@
 
 #include "TTree.h"
 
+#include "RawData/OpDetWaveform.h"
+
 namespace opana{
   class OpDetInvestigator;
 }
@@ -28,16 +30,23 @@ public:
   /// Default destructor
   virtual ~OpDetInvestigator(){};
 
-  void RunAnalysis();
+  void RunAnalysis(std::vector<raw::OpDetWaveform> const&);
   void SetupOutputTree(TTree*);
   
  private:
 
   std::string fAlgName;
-  TTree*      fTree;
+
+  //this is gonna be a per Waveform Tree
+  TTree*      fWaveformTree;
+  Double_t  waveform_start_time;
+  UInt_t    waveform_channel;
+  UInt_t    waveform_size;
+  Double_t  waveform_peak_time;
+  Short_t   waveform_peak_value;
   
   void PrintInfo();
-
+  void AnalyzeWaveform(raw::OpDetWaveform const&);
   
 };
 
